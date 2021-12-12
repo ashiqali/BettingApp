@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingApp.API", "BettingApp.API\BettingApp.API.csproj", "{D52278A4-6844-43E6-84F4-FD713626A84F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BettingApp.API", "BettingApp.API\BettingApp.API.csproj", "{D52278A4-6844-43E6-84F4-FD713626A84F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingApp.BLL", "BettingApp.Service\BettingApp.BLL.csproj", "{6D504773-6019-4A7B-A02B-FD5DEC030308}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingApp.DAL", "BettingApp.Repository\BettingApp.DAL.csproj", "{CE90128B-AD58-430C-9551-16CA34C2E6E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D52278A4-6844-43E6-84F4-FD713626A84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D52278A4-6844-43E6-84F4-FD713626A84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D52278A4-6844-43E6-84F4-FD713626A84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D504773-6019-4A7B-A02B-FD5DEC030308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D504773-6019-4A7B-A02B-FD5DEC030308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D504773-6019-4A7B-A02B-FD5DEC030308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D504773-6019-4A7B-A02B-FD5DEC030308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE90128B-AD58-430C-9551-16CA34C2E6E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE90128B-AD58-430C-9551-16CA34C2E6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE90128B-AD58-430C-9551-16CA34C2E6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE90128B-AD58-430C-9551-16CA34C2E6E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

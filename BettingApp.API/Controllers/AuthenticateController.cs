@@ -1,5 +1,5 @@
-﻿using BettingApp.API.IdentityAuth;
-using BettingApp.API.Models;
+﻿using BettingApp.API.Models;
+using BettingApp.DAL.IdentityAuth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +12,12 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BettingApp.API.Controllers
-{
-    [Route("api/[controller]")]
+namespace BettingApp.API.Controllers.V1
+{    
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")]    
     public class AuthenticateController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;

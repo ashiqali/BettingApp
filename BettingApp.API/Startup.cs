@@ -1,5 +1,8 @@
-using BettingApp.API.DbContext;
-using BettingApp.API.IdentityAuth;
+using BettingApp.BLL;
+using BettingApp.DAL.DbContexts;
+using BettingApp.DAL.IdentityAuth;
+using BettingApp.DAL.Repository;
+using BettingApp.DAL.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -77,13 +80,19 @@ namespace BettingApp.API
                 options.TokenLifespan = TimeSpan.FromHours(2);
             });
 
+            services.AddApiVersioning(setup =>
+            {
+                setup.DefaultApiVersion = new ApiVersion(1, 0);
+                setup.AssumeDefaultVersionWhenUnspecified = true;
+                setup.ReportApiVersions = true;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "BettingApp.API",
                     Version = "v1",
-                    Description = "Authentication & Authorization in ASP.Net Core 5.0 with JWT & Swagger"
+                    Description = "BettingApp"
                 });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
@@ -109,6 +118,14 @@ namespace BettingApp.API
                     }
                 });
             });
+
+            services.AddTransient<ICompetitorRepository, CompetitorRepository>();
+            services.AddTransient<IFixtureRepository, FixtureRepository>();
+            services.AddTransient<IFixtureDetailsRepository, FixtureDetailsRepository>();
+            services.AddTransient<IMarketRepository, MarketRepository>();
+
+            services.AddTransient<IFixtureService, FixtureService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
