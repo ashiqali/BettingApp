@@ -1,3 +1,4 @@
+using BettingApp.API.Logging;
 using BettingApp.BLL;
 using BettingApp.DAL.DbContexts;
 using BettingApp.DAL.IdentityAuth;
@@ -16,8 +17,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NLog;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -29,6 +32,7 @@ namespace BettingApp.API
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
@@ -126,6 +130,7 @@ namespace BettingApp.API
 
             services.AddTransient<IFixtureService, FixtureService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
